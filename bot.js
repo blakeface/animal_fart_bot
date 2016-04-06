@@ -46,4 +46,4 @@ function tweet(){
   })
 };
 
-tweet();
+setInterval(tweet, 86400000);
