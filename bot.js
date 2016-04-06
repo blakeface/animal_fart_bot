@@ -1,9 +1,20 @@
 var Twit = require('twit'),
-  dotenv = require('dotenv').config();
+  dotenv = require('dotenv').load();
 
 var T = new Twit({
-  consumerkey: 'QVNSHWDmNYTnMUnOpdnmWETt3',
-  consumersecret: 'Rpxv2XdC9jDXwdjmp2NrPVGfv87CMSQ6P4WijdfL6YLER6TqRK',
-  accesstoken: '	717508463501320193-B8bIbf2SgCM5Tu6jqujMV7QRgm2mmFE',
-  accesstoken_secret: 'bLPWUr5UVkzqtxva8AYrS7uwD4CroCfWSFeAPuQPJ20BE'
+  consumer_key: process.env.CONSUMER_KEY,
+  consumer_secret: process.env.CONSUMER_SECRET,
+  access_token: process.env.ACCESS_TOKEN,
+  access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
+
+var xhr = new 
+
+function testTweet(){
+  T.post('statuses/update', { status: 'first bot tweet' },
+  function ( err, data, response ){
+    console.log(err);
+  })
+};
+
+testTweet();
