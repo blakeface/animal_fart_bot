@@ -1,6 +1,6 @@
 var Twit = require('twit'),
-  dotenv = require('dotenv').load(),
-  emojiArr = require('./emoji.js');
+dotenv = require('dotenv').load(),
+emojiArr = require('./emoji.js');
 
 var T = new Twit({
   consumer_key: process.env.CONSUMER_KEY,
@@ -8,6 +8,15 @@ var T = new Twit({
   access_token: process.env.ACCESS_TOKEN,
   access_token_secret: process.env.ACCESS_TOKEN_SECRET
 });
+
+var stream = T.stream('user');
+
+stream.on('tweet', function ( err, reply ){
+  if ( err ) console.log(err);
+  else {
+    tweet();
+  }
+})
 
 function tweet(){
   randomEmoji = Math.floor(Math.random() * emojiArr.emojiLib[0].length);
